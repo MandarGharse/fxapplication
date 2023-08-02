@@ -1,0 +1,59 @@
+<div class="my-3">
+  <h3>Trade Capture</h3>
+</div>
+<form tradeCaptureForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="ccyPair">CCY Pair</label>
+    <input
+      type="text"
+      [(ngModel)]="ccyPair"
+      class="form-control"
+      id="ccyPair"
+      name="ccyPair"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  <div class="form-group">
+    <label for="buySell">Buy/Sell</label>
+    <input
+      type="text"
+      [(ngModel)]="buySell"
+      class="form-control"
+      id="buySell"
+      name="buySell"
+    />
+  </div>
+  <div class="form-group">
+    <label for="dealtCcy">DealtCcy</label>
+    <input
+      type="text"
+      [(ngModel)]="dealtCcy"
+      class="form-control"
+      id="dealtCcy"
+      name="dealtCcy"
+    />
+  </div>
+  <div class="form-group" my-3>
+    <label for="dealtAmount">DealtAmount</label>
+    <input
+      type="text"
+      [(ngModel)]="dealtAmount"
+      class="form-control"
+      id="dealtAmount"
+      name="dealtAmount"
+    />
+  </div>
+  <div class="form-group" my-3>
+    <label for="counterAmount">CountertAmount</label>
+    <input
+      type="text"
+      [(ngModel)]="counterAmount"
+      class="form-control"
+      id="counterAmount"
+      name="counterAmount"
+    />
+  </div>
+  <div class="form-group" my-3>
+    <button type="submit" class="btn btn-sm btn-primary">Book</button>
+  </div>
+</form>
