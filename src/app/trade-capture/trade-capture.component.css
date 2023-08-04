@@ -1,0 +1,26 @@
+.grid {
+  display: flex;
+}
+
+.input {
+  text-align: left;
+  background-color: black;
+  width: 100px;
+  margin: 10px 10px;
+  /* box-sizing: border-box; */
+  color: yellow;
+}
+
+.label {
+  text-align: left;
+  color: rgba(13, 13, 138, 0.938);
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 0px;
+  background: red;
+}

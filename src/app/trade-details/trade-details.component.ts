@@ -3,13 +3,43 @@ import { TradeService } from '../trade.service';
 import { Trade } from '../domain/Trade';
 import { ColDef, GridReadyEvent, GridOptions } from 'ag-grid-community';
 import { Observable } from 'rxjs';
+import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-trade-details',
   templateUrl: './trade-details.component.html',
   styleUrls: ['./trade-details.component.css'],
+
+  template: ` <button (click)="sendMessage()">Send Message</button> `,
 })
-export class TradeDetailsComponent {
+export class TradeDetailsComponent implements OnInit {
+  receivedMessages: string[] = [];
+
+  ngOnInit(): void {
+    this.websocketService.connect();
+    this.websocketService.messageReceived.subscribe((message: string) => {
+      this.receivedMessages.push(message);
+    });
+
+    this.tradeService.tradeDataObservable.subscribe((trade) => {
+      console.log(trade);
+      if (!this.isEmptyObject(trade)) {
+        this.rowData.push(trade);
+        this.gridApi.setRowData(this.rowData); // Refresh grid
+      }
+    });
+  }
+
+  sendMessage(): void {
+    const message = 'Hello, WebSocket!';
+    this.websocketService.sendMessage(message);
+  }
+
+  constructor(
+    private websocketService: WebsocketService,
+    private tradeService: TradeService
+  ) {}
+
   private gridApi;
 
   // Each Column Definition results in one Column.
@@ -57,18 +87,6 @@ export class TradeDetailsComponent {
     //this.gridOptions.columnApi.sizeColumnsToFit(500);
     this.gridApi = params.api; // To access the grids API
     params.columnApi.autoSizeAllColumns();
-  }
-
-  constructor(private tradeService: TradeService) {}
-
-  ngOnInit(): void {
-    this.tradeService.tradeDataObservable.subscribe((trade) => {
-      console.log(trade);
-      if (!this.isEmptyObject(trade)) {
-        this.rowData.push(trade);
-        this.gridApi.setRowData(this.rowData); // Refresh grid
-      }
-    });
   }
 
   isEmptyObject(obj) {
