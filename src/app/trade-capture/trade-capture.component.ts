@@ -1,6 +1,7 @@
+import { Injectable } from '@angular/core';
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Trade } from 'src/app/domain/Trade';
-import { TradeService } from '../trade.service';
+import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-trade-capture',
@@ -14,7 +15,7 @@ export class TradeCaptureComponent implements OnInit {
   dealtAmount: number;
   counterAmount: number;
 
-  constructor(private tradeService: TradeService) {}
+  constructor(private websocketService: WebsocketService) {}
 
   ngOnInit(): void {}
 
@@ -26,6 +27,7 @@ export class TradeCaptureComponent implements OnInit {
       dealtAmount: this.dealtAmount,
       counterAmount: this.counterAmount,
     };
-    this.tradeService.updateTradeData(trade);
+
+    this.websocketService.sendMessage('/app/greet', JSON.stringify(trade));
   }
 }

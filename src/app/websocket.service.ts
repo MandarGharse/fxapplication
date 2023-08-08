@@ -1,42 +1,61 @@
 import { Injectable } from '@angular/core';
+import * as Stomp from 'stompjs';
 import { Subject } from 'rxjs';
+import { Message } from './domain/Message';
+import { Greeting } from './domain/Greeting';
+import * as SockJS from 'sockjs-client/dist/sockjs';
+import { Subscriber } from './Subscriber';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WebsocketService {
-  private socket: WebSocket;
-  messageReceived: Subject<string> = new Subject<string>();
+  stompClient: any;
+  responseSubject = new Subject<String>();
+  webSocketEndpoint: string = 'http://localhost:8080/ws';
 
-  constructor() {}
+  connect(subscribers: Subscriber[] = null) {
+    console.log('Initialize WebSocket Connection. connecting ...');
+    let ws = SockJS(this.webSocketEndpoint);
+    this.stompClient = Stomp.over(ws);
+    console.log('connected!');
 
-  connect(): void {
-    this.socket = new WebSocket('ws://localhost:8080/user');
+    const _this = this;
 
-    this.socket.onopen = () => {
-      console.log('WebSocket connection established.');
-    };
-
-    this.socket.onmessage = (event) => {
-      const message = event.data;
-      console.log('Received message:', message);
-      this.messageReceived.next(message);
-    };
-
-    this.socket.onclose = (event) => {
-      console.log('WebSocket connection closed:', event);
-    };
-
-    this.socket.onerror = (error) => {
-      console.error('WebSocket error::', error);
-    };
+    this.stompClient.connect(
+      {},
+      (frame) => {
+        subscribers.forEach((subscriber) => {
+          _this.stompClient.subscribe(subscriber.URL, subscriber.CALLBACK);
+        });
+      },
+      () => {
+        console.log(_this.stompClient);
+      }
+    );
   }
 
-  sendMessage(message: string): void {
-    this.socket.send(message);
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+    console.log('Disconnected');
   }
 
-  // closeConnection(): void {
-  //   this.socket.close();
+  errorCallBack(error: any) {
+    console.log('errorCallBack -> ' + error);
+    setTimeout(() => {
+      this.connect();
+    }, 5000);
+  }
+
+  sendMessage(topic: string, message: String) {
+    console.log('Sending Message :: ' + message);
+    this.stompClient.send(topic, {}, message);
+  }
+
+  // onMessageReceived(message: any) {
+  //   console.log('Message Received from Server :: ' + message.body);
+  //   this.responseSubject.next(message);
   // }
 }

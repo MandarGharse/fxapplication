@@ -16,11 +16,6 @@ export class TradeDetailsComponent implements OnInit {
   receivedMessages: string[] = [];
 
   ngOnInit(): void {
-    this.websocketService.connect();
-    this.websocketService.messageReceived.subscribe((message: string) => {
-      this.receivedMessages.push(message);
-    });
-
     this.tradeService.tradeDataObservable.subscribe((trade) => {
       console.log(trade);
       if (!this.isEmptyObject(trade)) {
@@ -30,15 +25,7 @@ export class TradeDetailsComponent implements OnInit {
     });
   }
 
-  sendMessage(): void {
-    const message = 'Hello, WebSocket!';
-    this.websocketService.sendMessage(message);
-  }
-
-  constructor(
-    private websocketService: WebsocketService,
-    private tradeService: TradeService
-  ) {}
+  constructor(private tradeService: TradeService) {}
 
   private gridApi;
 
