@@ -28,6 +28,7 @@ export class TradeCaptureComponent implements OnInit {
       counterAmount: this.counterAmount,
     };
 
-    this.websocketService.sendMessage('/app/greet', JSON.stringify(trade));
+    console.log('sending trade for booking ' + JSON.stringify(trade));
+    this.websocketService.sendMessage('/app/booking', JSON.stringify(trade));
   }
 }

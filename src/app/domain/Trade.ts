@@ -1,7 +1,9 @@
 export class Trade {
+  tradeKey: string;
+  tradeVersion: string;
   ccyPair: string;
   buySell: string;
   dealtCcy: string;
-  dealtAmount: number;
-  counterAmount: number;
+  dealtAmount: string;
+  counterAmount: string;
 }

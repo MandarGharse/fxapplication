@@ -6,14 +6,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class TradeService {
-  private tradeDataMessage: BehaviorSubject<Trade> = new BehaviorSubject(
-    new Trade()
-  );
+  private tradeDataMessage: BehaviorSubject<Trade[]> = new BehaviorSubject<
+    Trade[]
+  >(new Array<Trade>());
+
   tradeDataObservable = this.tradeDataMessage.asObservable();
 
   constructor() {}
 
-  updateTradeData(trade: Trade) {
-    this.tradeDataMessage.next(trade);
+  updateTradeData(trades: Trade[]) {
+    this.tradeDataMessage.next(trades);
   }
 }

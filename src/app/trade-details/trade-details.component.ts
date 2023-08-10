@@ -16,10 +16,13 @@ export class TradeDetailsComponent implements OnInit {
   receivedMessages: string[] = [];
 
   ngOnInit(): void {
-    this.tradeService.tradeDataObservable.subscribe((trade) => {
-      console.log(trade);
-      if (!this.isEmptyObject(trade)) {
-        this.rowData.push(trade);
+    this.tradeService.tradeDataObservable.subscribe((trades) => {
+      if (!this.isEmptyObject(trades)) {
+        let i = 0;
+        for (; i < trades.length; i++) {
+          console.log('trade >>>' + trades[i]);
+          this.rowData.push(trades[i]);
+        }
         this.gridApi.setRowData(this.rowData); // Refresh grid
       }
     });
@@ -31,11 +34,11 @@ export class TradeDetailsComponent implements OnInit {
 
   // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { field: 'ccyPair', width: 150 },
-    { field: 'buySell', width: 150 },
-    { field: 'dealtCcy', width: 150 },
-    { field: 'dealtAmount', width: 200, resizable: true },
-    { field: 'counterAmount', width: 200, resizable: true },
+    { headerName: 'Currency Pair', field: 'ccyPair' },
+    { headerName: 'Buy/Sell', field: 'buySell' },
+    { headerName: 'Dealt Currency', field: 'dealtCcy' },
+    { headerName: 'Dealt Amount', field: 'dealtAmount' },
+    { headerName: 'Counter Amount', field: 'counterAmount', resizable: true },
   ];
 
   // DefaultColDef sets props common to all Columns

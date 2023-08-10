@@ -1,0 +1,21 @@
+
+ww# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   package-lock.json
+#	modified:   package.json
+#	deleted:    src/app.js
+#	new file:   src/app/Subscriber.ts
+#	modified:   src/app/app.component.ts
+#	new file:   src/app/domain/Greeting.ts
+#	new file:   src/app/domain/Message.ts
+#	deleted:    src/app/fxapplication.service.spec.ts
+#	deleted:    src/app/fxapplication.service.ts
+#	modified:   src/app/trade-capture/trade-capture.component.ts
+#	modified:   src/app/trade-details/trade-details.component.ts
+#	modified:   src/app/websocket.service.ts
+#

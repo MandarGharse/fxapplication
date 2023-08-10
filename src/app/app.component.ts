@@ -3,6 +3,7 @@ import { WebsocketService } from './websocket.service';
 import { Subscriber } from './Subscriber';
 import { TradeService } from './trade.service';
 import { Subject } from 'rxjs';
+import { Trade } from './domain/Trade';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { Subject } from 'rxjs';
   providers: [],
 })
 export class AppComponent implements OnInit {
-  tradeSubject = new Subject<string>();
+  tradeBookingSubject = new Subject<string>();
+  allTradesSubject = new Subject<string>();
 
   constructor(
     private tradeService: TradeService,
@@ -21,18 +23,28 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     let self = this;
     this.websocketService.connect([
-      new Subscriber('/topic/greetings', function (data) {
-        console.log('Greeting Subscriber 1 rcvd data :: ' + data);
-        self.tradeSubject.next(data.body);
+      new Subscriber('/user/queue/booking', function (data) {
+        self.tradeBookingSubject.next(data.body);
       }),
-      new Subscriber('/topic/greetings', function (data) {
-        console.log('Greeting Subscriber 2 rcvd data :: ' + data);
+      new Subscriber('/user/queue/fxtrades', function (data) {
+        console.log('FXTrades Response rcvd data :: ' + data);
+        self.allTradesSubject.next(data.body);
       }),
     ]);
 
-    this.tradeSubject.subscribe((data) => {
-      console.log('processing trade data ' + data);
-      this.tradeService.updateTradeData(JSON.parse(data));
+    this.tradeBookingSubject.subscribe((data) => {
+      console.log('processing booking response data ' + data);
+      const trades: Trade[] = [];
+      trades.push(JSON.parse(data));
+
+      this.tradeService.updateTradeData(trades);
+    });
+
+    this.allTradesSubject.subscribe((data) => {
+      console.log('processing trades data ' + data);
+      var dataObj = JSON.parse(data);
+
+      this.tradeService.updateTradeData(dataObj.trades);
     });
   }
 }
