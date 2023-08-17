@@ -34,7 +34,7 @@ export class WebsocketService {
             frame.headers['user-name']
         );
         this.userName = frame.headers['user-name'];
-        this.requestFXTrades();
+        this.fxTradesSubscriptionRequest();
 
         subscribers.forEach((subscriber) => {
           _this.stompClient.subscribe(subscriber.URL, subscriber.CALLBACK);
@@ -69,7 +69,7 @@ export class WebsocketService {
   // }
 
   // TODO : clients should subscribe for WS ready message and request directly
-  requestFXTrades() {
+  fxTradesSubscriptionRequest() {
     // Request for trades from server
     const fxTradesRequest = {
       sessionId: this.userName,
@@ -79,6 +79,9 @@ export class WebsocketService {
     console.log(
       'Requesting trades data from server ' + JSON.stringify(fxTradesRequest)
     );
-    this.sendMessage('/app/fxtrades', JSON.stringify(fxTradesRequest));
+    this.sendMessage(
+      '/app/fxtrades_subscription',
+      JSON.stringify(fxTradesRequest)
+    );
   }
 }

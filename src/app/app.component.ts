@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
       new Subscriber('/user/queue/booking', function (data) {
         self.tradeBookingSubject.next(data.body);
       }),
-      new Subscriber('/user/queue/fxtrades', function (data) {
+      new Subscriber('/user/queue/fxtrades_subscription', function (data) {
         console.log('FXTrades Response rcvd data :: ' + data);
         self.allTradesSubject.next(data.body);
       }),
