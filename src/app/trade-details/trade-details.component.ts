@@ -17,6 +17,7 @@ export class TradeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.tradeService.tradeDataObservable.subscribe((trades) => {
+      console.log('rendering trades ' + trades);
       if (!this.isEmptyObject(trades)) {
         let i = 0;
         for (; i < trades.length; i++) {

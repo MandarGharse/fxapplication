@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { TradeCaptureComponent } from './trade-capture/trade-capture.component';
 import { TradeDetailsComponent } from './trade-details/trade-details.component';
 import { FormsModule } from '@angular/forms';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
-  declarations: [AppComponent, TradeCaptureComponent, TradeDetailsComponent],
+  declarations: [AppComponent, TradeCaptureComponent, TradeDetailsComponent, ChartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

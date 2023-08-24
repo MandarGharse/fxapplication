@@ -13,7 +13,8 @@ import { Trade } from './domain/Trade';
 })
 export class AppComponent implements OnInit {
   tradeBookingSubject = new Subject<string>();
-  allTradesSubject = new Subject<string>();
+  tradesSubject = new Subject<string>();
+  summarySubject = new Subject<string>();
 
   constructor(
     private tradeService: TradeService,
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
       }),
       new Subscriber('/user/queue/fxtrades_subscription', function (data) {
         console.log('FXTrades Response rcvd data :: ' + data);
-        self.allTradesSubject.next(data.body);
+        self.tradesSubject.next(data.body);
       }),
     ]);
 
@@ -40,11 +41,25 @@ export class AppComponent implements OnInit {
       this.tradeService.updateTradeData(trades);
     });
 
-    this.allTradesSubject.subscribe((data) => {
+    this.tradesSubject.subscribe((data) => {
       console.log('processing trades data ' + data);
       var dataObj = JSON.parse(data);
 
-      this.tradeService.updateTradeData(dataObj.trades);
+      console.log(
+        "dataObj.hasOwnProperty('trades') ? " + dataObj.hasOwnProperty('trades')
+      );
+      console.log(
+        "dataObj.hasOwnProperty('summary') ? " +
+          dataObj.hasOwnProperty('summary')
+      );
+
+      if (dataObj.hasOwnProperty('trades')) {
+        this.tradeService.updateTradeData(dataObj.trades);
+      }
+
+      if (dataObj.hasOwnProperty('summary')) {
+        this.tradeService.updateSummaryData(dataObj.summary);
+      }
     });
   }
 }
