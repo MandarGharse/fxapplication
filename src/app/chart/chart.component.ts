@@ -33,6 +33,10 @@ export class ChartComponent {
           },
         ],
       },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      }
     });
 
     this.tradeService.summaryDataObservable.subscribe((tradeSummary) => {
@@ -58,6 +62,10 @@ export class ChartComponent {
           datasets: [
             {
               fill: false,
+              innerWidth: 200,
+              outerWidth: 200,
+              innerHeight: 200,
+              outerHeight: 200,
               borderWidth: 3,
               pointStyle: 'line',
               pointHoverRadius: 4,
