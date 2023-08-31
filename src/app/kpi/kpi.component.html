@@ -1,0 +1,16 @@
+<mat-grid-list id="kpi1" cols="4" rowHeight="8:1" class="internalMatGrid">
+  <mat-grid-tile (click)="onClick('todaystrades')"
+    >{{ total_trades_label }}<br />{{ total_trades_value }}</mat-grid-tile
+  >
+  <mat-grid-tile (click)="onClick('tradedatetoday')"
+    >{{ tradedate_today_label }}<br />{{ tradedate_today_value }}</mat-grid-tile
+  >
+  <mat-grid-tile (click)="onClick('valuedatetoday')"
+    >{{ valuedate_today_label }}<br />{{ valuedate_today_value }}</mat-grid-tile
+  >
+  <mat-grid-tile (click)="onClick('fixingdatetoday')"
+    >{{ fixingdate_today_label }}<br />{{
+      fixingdate_today_value
+    }}</mat-grid-tile
+  >
+</mat-grid-list>

@@ -70,17 +70,31 @@ export class WebsocketService {
   // TODO : clients should subscribe for WS ready message and request directly
   fxTradesSubscriptionRequest() {
     // Request for trades from server
-    const fxTradesSubscriptionRequest = {
+
+    // const fxTradesSubscriptionRequest = {
+    //   sessionId: this.userName,
+    //   type: 1,
+    // };
+    // console.log(
+    //   'Requesting trades data from server ' +
+    //     JSON.stringify(fxTradesSubscriptionRequest)
+    // );
+    // this.sendMessage(
+    //   '/app/fxtrades_subscription',
+    //   JSON.stringify(fxTradesSubscriptionRequest)
+    // );
+
+    const blotterSubscriptionRequest = {
       sessionId: this.userName,
       type: 1,
     };
     console.log(
-      'Requesting trades data from server ' +
-        JSON.stringify(fxTradesSubscriptionRequest)
+      'sending blotterSubscriptionRequest to server ' +
+        JSON.stringify(blotterSubscriptionRequest)
     );
     this.sendMessage(
-      '/app/fxtrades_subscription',
-      JSON.stringify(fxTradesSubscriptionRequest)
+      '/app/blotter_subscription',
+      JSON.stringify(blotterSubscriptionRequest)
     );
   }
 

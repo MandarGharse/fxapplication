@@ -14,7 +14,7 @@ import { Trade } from './domain/Trade';
 export class AppComponent implements OnInit {
   tradeBookingSubject = new Subject<string>();
   tradesSubject = new Subject<string>();
-  summarySubject = new Subject<string>();
+  blotterSubscriptionSubject = new Subject<string>();
 
   constructor(
     private tradeService: TradeService,
@@ -31,6 +31,10 @@ export class AppComponent implements OnInit {
         console.log('FXTrades Response rcvd data :: ' + data);
         self.tradesSubject.next(data.body);
       }),
+      new Subscriber('/user/queue/blotter_subscription', function (data) {
+        console.log('blotter_subscription Response rcvd data :: ' + data);
+        self.blotterSubscriptionSubject.next(data.body);
+      }),
     ]);
 
     this.tradeBookingSubject.subscribe((data) => {
@@ -38,28 +42,29 @@ export class AppComponent implements OnInit {
       const trades: Trade[] = [];
       trades.push(JSON.parse(data));
 
-      this.tradeService.updateTradeData(trades);
+      //this.tradeService.updatedDataReceived(trades);
     });
 
-    this.tradesSubject.subscribe((data) => {
+    this.blotterSubscriptionSubject.subscribe((data) => {
       console.log('processing trades data ' + data);
+
       var dataObj = JSON.parse(data);
 
       console.log(
-        "dataObj.hasOwnProperty('trades') ? " + dataObj.hasOwnProperty('trades')
-      );
-      console.log(
-        "dataObj.hasOwnProperty('summary') ? " +
-          dataObj.hasOwnProperty('summary')
+        'processing trades data ' +
+          dataObj.blotterSubscriptionResponse.summaryResponse.summary[0]
+            .statistics[0].count
       );
 
-      if (dataObj.hasOwnProperty('trades')) {
-        this.tradeService.updateTradeData(dataObj.trades);
-      }
+      this.tradeService.blotterSubscriptionDataReceived(dataObj);
 
-      if (dataObj.hasOwnProperty('summary')) {
-        this.tradeService.updateSummaryData(dataObj.summary);
-      }
+      // if (dataObj.hasOwnProperty('trades')) {
+      //   this.tradeService.blotterSubscriptionDataReceived(dataObj.trades);
+      // }
+
+      // if (dataObj.hasOwnProperty('summary')) {
+      //   this.tradeService.updateSummaryData(dataObj.summary);
+      // }
     });
   }
 }

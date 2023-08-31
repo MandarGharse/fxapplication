@@ -17,9 +17,9 @@ export class ChartComponent {
   ngOnInit() {
     const myChartLabels = [
       'Total Trades',
-      'Value Today',
-      'TradeDate Today',
-      'Fixing Today',
+      'Trade Date Today',
+      'Value Date Today',
+      'Fixing Date Today',
     ];
 
     this.chart = new Chart('canvas', {
@@ -36,49 +36,73 @@ export class ChartComponent {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-      }
+      },
     });
 
-    this.tradeService.summaryDataObservable.subscribe((tradeSummary) => {
-      if (!this.isEmptyObject(tradeSummary)) {
-        console.log(
-          'rendering chart with new tradeSummary ' +
-            tradeSummary.totalTrades +
-            ' ' +
-            tradeSummary.tradesValuedateToday +
-            ' ' +
-            tradeSummary.tradesTradedateToday
-        );
-        this.myChartData = [
-          tradeSummary.totalTrades,
-          tradeSummary.tradesValuedateToday,
-          tradeSummary.tradesTradedateToday,
-        ];
-        // this.chart.data.datasets.length = 0;
-        // this.chart.update();
+    this.tradeService.blotterSubscriptionDataObservable.subscribe(
+      (dataObj: any) => {
+        if (!this.isEmptyObject(dataObj)) {
+          console.log(
+            'rendering chart with new tradeSummary ' +
+              dataObj.blotterSubscriptionResponse
+          );
 
-        let dataUpdate = {
-          labels: myChartLabels,
-          datasets: [
-            {
-              fill: false,
-              innerWidth: 200,
-              outerWidth: 200,
-              innerHeight: 200,
-              outerHeight: 200,
-              borderWidth: 3,
-              pointStyle: 'line',
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 12,
+          var totalTradesCount = 0,
+            totalTradeDateTodayCount = 0,
+            totalValueDateTodayCount = 0,
+            totalFixingDateTodayCount = 0;
+          for (
+            let index = 0;
+            index <
+            dataObj.blotterSubscriptionResponse.summaryResponse.summary[0]
+              .statistics.length;
+            index++
+          ) {
+            const element =
+              dataObj.blotterSubscriptionResponse.summaryResponse.summary[0]
+                .statistics[index];
 
-              data: this.myChartData,
-            },
-          ],
-        };
-        this.chart.data = dataUpdate;
-        this.chart.update();
+            if (element.key == 'TOTAL_TRADES') {
+              totalTradesCount = element.count;
+            } else if (element.key == 'TRADEDATE_TODAY') {
+              totalTradeDateTodayCount = element.count;
+            } else if (element.key == 'VALUEDATE_TODAY') {
+              totalValueDateTodayCount = element.count;
+            } else if (element.key == 'FIXINGDATE_TODAY') {
+              totalFixingDateTodayCount = element.count;
+            }
+          }
+
+          this.myChartData = [
+            totalTradesCount,
+            totalTradeDateTodayCount,
+            totalValueDateTodayCount,
+            totalFixingDateTodayCount,
+          ];
+
+          let dataUpdate = {
+            labels: myChartLabels,
+            datasets: [
+              {
+                fill: false,
+                innerWidth: 200,
+                outerWidth: 200,
+                innerHeight: 200,
+                outerHeight: 200,
+                borderWidth: 3,
+                pointStyle: 'line',
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 12,
+
+                data: this.myChartData,
+              },
+            ],
+          };
+          this.chart.data = dataUpdate;
+          this.chart.update();
+        }
       }
-    });
+    );
   }
 
   isEmptyObject(obj) {

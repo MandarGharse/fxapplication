@@ -7,22 +7,27 @@ import { TradeSummary } from './domain/TradeSummary';
   providedIn: 'root',
 })
 export class TradeService {
-  private tradeDataMessage: BehaviorSubject<Trade[]> = new BehaviorSubject<
-    Trade[]
-  >(new Array<Trade>());
-  private summaryDataMessage: BehaviorSubject<TradeSummary> =
+  private blotterSubscriptionDataMessage: BehaviorSubject<Object> =
+    new BehaviorSubject<Object>(new Array<Trade>());
+  private tradeSubscriptionDataMessage: BehaviorSubject<TradeSummary> =
     new BehaviorSubject<TradeSummary>(new TradeSummary());
 
-  tradeDataObservable = this.tradeDataMessage.asObservable();
-  summaryDataObservable = this.summaryDataMessage.asObservable();
+  blotterSubscriptionDataObservable =
+    this.blotterSubscriptionDataMessage.asObservable();
+  tradeSubscriptionDataObservable =
+    this.tradeSubscriptionDataMessage.asObservable();
 
   constructor() {}
 
-  updateTradeData(trades: Trade[]) {
-    this.tradeDataMessage.next(trades);
+  blotterSubscriptionDataReceived(dataObj) {
+    this.blotterSubscriptionDataMessage.next(dataObj);
   }
 
-  updateSummaryData(summary: TradeSummary) {
-    this.summaryDataMessage.next(summary);
-  }
+  // updateTradeData(trades: Trade[]) {
+  //   this.tradeDataMessage.next(trades);
+  // }
+
+  // updateSummaryData(summary: TradeSummary) {
+  //   this.summaryDataMessage.next(summary);
+  // }
 }

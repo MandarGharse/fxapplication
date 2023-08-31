@@ -10,15 +10,27 @@ import { TradeCaptureComponent } from './trade-capture/trade-capture.component';
 import { TradeDetailsComponent } from './trade-details/trade-details.component';
 import { FormsModule } from '@angular/forms';
 import { ChartComponent } from './chart/chart.component';
+import { KpiComponent } from './kpi/kpi.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
-  declarations: [AppComponent, TradeCaptureComponent, TradeDetailsComponent, ChartComponent],
+  declarations: [
+    AppComponent,
+    TradeCaptureComponent,
+    TradeDetailsComponent,
+    ChartComponent,
+    KpiComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     AgGridModule,
+    MatGridListModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
