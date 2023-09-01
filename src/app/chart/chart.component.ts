@@ -89,7 +89,7 @@ export class ChartComponent {
                 outerWidth: 200,
                 innerHeight: 200,
                 outerHeight: 200,
-                borderWidth: 3,
+                borderWidth: 1,
                 pointStyle: 'line',
                 pointHoverRadius: 4,
                 pointHoverBorderWidth: 12,

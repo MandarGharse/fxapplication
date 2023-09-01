@@ -14,6 +14,8 @@ import { KpiComponent } from './kpi/kpi.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
+import { FooterComponent } from './footer/footer.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     TradeDetailsComponent,
     ChartComponent,
     KpiComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     AgGridModule,
     MatGridListModule,
     MatTabsModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

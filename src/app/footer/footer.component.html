@@ -1,0 +1,15 @@
+<mat-grid-list id="kpi" cols="2" rowHeight="16:1">
+  <mat-grid-tile>
+    <div
+      fxLayoutWrap
+      fxLayoutAlign="start center"
+      class="mymattile-align-left2"
+    >
+      {{ total_trades_label
+      }}{{
+        total_trades_value
+      }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ net_position_label
+      }}{{ net_position_value }}
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

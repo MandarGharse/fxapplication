@@ -1,16 +1,22 @@
 <mat-grid-list id="kpi1" cols="4" rowHeight="8:1" class="internalMatGrid">
-  <mat-grid-tile (click)="onClick('todaystrades')"
-    >{{ total_trades_label }}<br />{{ total_trades_value }}</mat-grid-tile
-  >
-  <mat-grid-tile (click)="onClick('tradedatetoday')"
-    >{{ tradedate_today_label }}<br />{{ tradedate_today_value }}</mat-grid-tile
-  >
-  <mat-grid-tile (click)="onClick('valuedatetoday')"
-    >{{ valuedate_today_label }}<br />{{ valuedate_today_value }}</mat-grid-tile
-  >
-  <mat-grid-tile (click)="onClick('fixingdatetoday')"
-    >{{ fixingdate_today_label }}<br />{{
-      fixingdate_today_value
-    }}</mat-grid-tile
-  >
+  <mat-grid-tile class="top-left" (click)="onClick('todaystrades')">
+    <div fxLayoutWrap fxLayoutAlign="start center" class="mymattile-align-left">
+      {{ total_trades_label }}<br />{{ total_trades_value }}
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile (click)="onClick('tradedatetoday')">
+    <div fxLayoutWrap fxLayoutAlign="start center" class="mymattile-align-left">
+      {{ tradedate_today_label }}<br />{{ tradedate_today_value }}
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile (click)="onClick('valuedatetoday')">
+    <div fxLayoutWrap fxLayoutAlign="start center" class="mymattile-align-left">
+      {{ valuedate_today_label }}<br />{{ valuedate_today_value }}
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile (click)="onClick('fixingdatetoday')">
+    <div fxLayoutWrap fxLayoutAlign="start center" class="mymattile-align-left">
+      {{ fixingdate_today_label }}<br />{{ fixingdate_today_value }}
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>
