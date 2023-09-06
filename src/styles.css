@@ -23,14 +23,14 @@ body {
   border: 1px solid rgb(0, 26, 255);
 }
 
-.mymattile-align-left {
+.mymattile-kpi-align-left {
   position: absolute;
   left: 5px;
   bottom: 5px;
   color: rgb(11, 161, 6);
 }
 
-.mymattile-align-left2 {
+.mattile-footer-align-left {
   position: absolute;
   left: 5px;
   bottom: 5px;

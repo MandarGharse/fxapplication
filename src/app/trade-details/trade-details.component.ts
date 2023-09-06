@@ -16,17 +16,37 @@ export class TradeDetailsComponent implements OnInit {
   receivedMessages: string[] = [];
 
   ngOnInit(): void {
-    this.tradeService.tradeSubscriptionDataObservable.subscribe((trades) => {
-      console.log('rendering trades ' + trades);
-      // if (!this.isEmptyObject(trades)) {
-      //   let i = 0;
-      //   for (; i < trades.length; i++) {
-      //     console.log('trade >>>' + trades[i]);
-      //     this.rowData.push(trades[i]);
-      //   }
-      //   this.gridApi.setRowData(this.rowData); // Refresh grid
-      // }
-    });
+    // this.tradeService.tradeResolutionDataObservable.subscribe((trades) => {
+    //   console.log('rendering trades ' + trades);
+    //   if (!this.isEmptyObject(trades)) {
+    //     let i = 0;
+    //     for (; i < trades.length; i++) {
+    //       console.log('trade >>>' + trades[i]);
+    //       this.rowData.push(trades[i]);
+    //     }
+    //     this.gridApi.setRowData(this.rowData); // Refresh grid
+    //   }
+    // });
+
+    this.tradeService.tradeResolutionDataObservable.subscribe(
+      (dataObj: any) => {
+        if (!this.isEmptyObject(dataObj)) {
+          console.log(
+            'rendering GRID with new trades ' + dataObj.tradeResolutionResponse
+          );
+
+          for (
+            let index = 0;
+            index < dataObj.tradeResolutionResponse.trades.length;
+            index++
+          ) {
+            this.rowData.push(dataObj.tradeResolutionResponse.trades[index]);
+          }
+
+          this.gridApi.setRowData(this.rowData); // Refresh grid
+        }
+      }
+    );
   }
 
   constructor(private tradeService: TradeService) {}

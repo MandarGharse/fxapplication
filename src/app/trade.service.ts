@@ -8,14 +8,17 @@ import { TradeSummary } from './domain/TradeSummary';
 })
 export class TradeService {
   private blotterSubscriptionDataMessage: BehaviorSubject<Object> =
-    new BehaviorSubject<Object>(new Array<Trade>());
-  private tradeSubscriptionDataMessage: BehaviorSubject<TradeSummary> =
-    new BehaviorSubject<TradeSummary>(new TradeSummary());
+    new BehaviorSubject<Object>(new Array());
+  // private blotterFillDataMessage: BehaviorSubject<Object> =
+  // new BehaviorSubject<Object>(new Array());
+  private tradeResolutionDataMessage: BehaviorSubject<Object> =
+    new BehaviorSubject<Object>(new Array());
 
   blotterSubscriptionDataObservable =
     this.blotterSubscriptionDataMessage.asObservable();
-  tradeSubscriptionDataObservable =
-    this.tradeSubscriptionDataMessage.asObservable();
+  // blotterFillDataObservable = this.blotterFillDataMessage.asObservable();
+  tradeResolutionDataObservable =
+    this.tradeResolutionDataMessage.asObservable();
 
   constructor() {}
 
@@ -23,11 +26,11 @@ export class TradeService {
     this.blotterSubscriptionDataMessage.next(dataObj);
   }
 
-  // updateTradeData(trades: Trade[]) {
-  //   this.tradeDataMessage.next(trades);
+  // blotterFillDataReceived(dataObj) {
+  //   this.blotterFillDataMessage.next(dataObj);
   // }
 
-  // updateSummaryData(summary: TradeSummary) {
-  //   this.summaryDataMessage.next(summary);
-  // }
+  tradeResolutionDataReceived(dataObj) {
+    this.tradeResolutionDataMessage.next(dataObj);
+  }
 }

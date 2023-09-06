@@ -18,7 +18,6 @@ export class WebsocketService {
     let ws = SockJS(this.webSocketEndpoint);
     this.stompClient = Stomp.over(ws);
     console.log('connected!');
-    console.log('stompClient >>> ' + this.stompClient.user);
 
     const _this = this;
 
@@ -37,7 +36,9 @@ export class WebsocketService {
           _this.stompClient.subscribe(subscriber.URL, subscriber.CALLBACK);
         });
 
-        this.fxTradesSubscriptionRequest();
+        // TODO : clients should subscribe for WS ready message and request directly
+        this.sendBlotterSubscription();
+        this.sendBlotterFill();
       },
       () => {}
     );
@@ -62,28 +63,7 @@ export class WebsocketService {
     this.stompClient.send(topic, {}, message);
   }
 
-  // onMessageReceived(message: any) {
-  //   console.log('Message Received from Server :: ' + message.body);
-  //   this.responseSubject.next(message);
-  // }
-
-  // TODO : clients should subscribe for WS ready message and request directly
-  fxTradesSubscriptionRequest() {
-    // Request for trades from server
-
-    // const fxTradesSubscriptionRequest = {
-    //   sessionId: this.userName,
-    //   type: 1,
-    // };
-    // console.log(
-    //   'Requesting trades data from server ' +
-    //     JSON.stringify(fxTradesSubscriptionRequest)
-    // );
-    // this.sendMessage(
-    //   '/app/fxtrades_subscription',
-    //   JSON.stringify(fxTradesSubscriptionRequest)
-    // );
-
+  sendBlotterSubscription() {
     const blotterSubscriptionRequest = {
       sessionId: this.userName,
       type: 1,
@@ -98,19 +78,27 @@ export class WebsocketService {
     );
   }
 
-  fxTradesFillSubscriptionRequest() {
-    // Request for trades from server
-    const fxTradesRequest = {
+  sendBlotterFill() {
+    const blotterFillRequest = {
       sessionId: this.userName,
-      startIndex: 1,
+      startIndex: 0,
       endIndex: 20,
     };
     console.log(
-      'Requesting trades data from server ' + JSON.stringify(fxTradesRequest)
+      'sending blotterFillRequest to server ' +
+        JSON.stringify(blotterFillRequest)
+    );
+    this.sendMessage('/app/blotter_fill', JSON.stringify(blotterFillRequest));
+  }
+
+  sendTradeResolution(tradeResolutionRequest) {
+    console.log(
+      'sending tradeResolutionRequest to server ' +
+        JSON.stringify(tradeResolutionRequest)
     );
     this.sendMessage(
-      '/app/fxtrades_subscription',
-      JSON.stringify(fxTradesRequest)
+      '/app/trade_resolution',
+      JSON.stringify(tradeResolutionRequest)
     );
   }
 }
