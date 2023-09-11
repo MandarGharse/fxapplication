@@ -38,7 +38,7 @@ export class WebsocketService {
 
         // TODO : clients should subscribe for WS ready message and request directly
         this.sendBlotterSubscription();
-        this.sendBlotterFill();
+        // this.sendBlotterFill(1, 20);
       },
       () => {}
     );
@@ -59,7 +59,7 @@ export class WebsocketService {
   }
 
   sendMessage(topic: string, message: string) {
-    console.log('Sending Message :: ' + message);
+    //console.log('Sending Message :: ' + message);
     this.stompClient.send(topic, {}, message);
   }
 
@@ -78,11 +78,11 @@ export class WebsocketService {
     );
   }
 
-  sendBlotterFill() {
+  sendBlotterFill(startIndex, endIndex) {
     const blotterFillRequest = {
       sessionId: this.userName,
-      startIndex: 0,
-      endIndex: 20,
+      startIndex: startIndex,
+      endIndex: endIndex,
     };
     console.log(
       'sending blotterFillRequest to server ' +

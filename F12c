@@ -1,4 +1,3 @@
-
 ww# Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
 #
@@ -16,6 +15,5 @@ ww# Please enter the commit message for your changes. Lines starting
 #	deleted:    src/app/fxapplication.service.spec.ts
 #	deleted:    src/app/fxapplication.service.ts
 #	modified:   src/app/trade-capture/trade-capture.component.ts
-#	modified:   src/app/trade-details/trade-details.component.ts
 #	modified:   src/app/websocket.service.ts
 #

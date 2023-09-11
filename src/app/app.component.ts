@@ -30,11 +30,11 @@ export class AppComponent implements OnInit {
         self.blotterSubscriptionSubject.next(data.body);
       }),
       new Subscriber('/user/queue/blotter_fill', function (data) {
-        console.log('blotter_fill Response rcvd data :: ' + data);
+        console.log('blotter_fill Response rcvd data...');
         self.blotterFillSubject.next(data.body);
       }),
       new Subscriber('/user/queue/trade_resolution', function (data) {
-        console.log('trade_resolution Response rcvd data :: ' + data);
+        console.log('trade_resolution Response rcvd data...');
         self.tradeResolutionSubject.next(data.body);
       }),
     ]);
@@ -52,9 +52,12 @@ export class AppComponent implements OnInit {
     });
 
     this.blotterFillSubject.subscribe((data) => {
-      console.log('processing blotter fill data ' + data);
-
       var dataObj = JSON.parse(data);
+
+      console.log(
+        'processing blotter fill data. trade count : ' +
+          dataObj.blotterFillResponse.tradesData.length
+      );
 
       let tradeKeyVersionList = [];
 
@@ -81,7 +84,7 @@ export class AppComponent implements OnInit {
     });
 
     this.tradeResolutionSubject.subscribe((data) => {
-      console.log('processing trade resolution data ' + data);
+      console.log('processing trade resolution data...');
 
       var dataObj = JSON.parse(data);
 
