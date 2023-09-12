@@ -27,13 +27,15 @@ body {
   position: absolute;
   left: 5px;
   bottom: 5px;
-  color: rgb(11, 161, 6);
+  font-size: medium;
+  color: rgb(7, 80, 4);
 }
 
 .mattile-footer-align-left {
   position: absolute;
   left: 5px;
   bottom: 5px;
-  color: rgb(11, 161, 6);
+  font-size: medium;
+  color: rgb(7, 80, 4);
   font-weight: bold;
 }

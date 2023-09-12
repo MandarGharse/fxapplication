@@ -17,5 +17,22 @@ export class FooterComponent {
   ngOnInit() {
     this.total_trades_label = 'Total Trades : ';
     this.net_position_label = 'Net Position (USD) : ';
+
+    this.tradeService.tradeResolutionDataObservable.subscribe((dataObj) => {
+      if (!this.isEmptyObject(dataObj)) {
+        this.total_trades_value =
+          this.tradeService.blotterSubscriptionDataObj.blotterSubscriptionResponse.totalTradeCount;
+        this.net_position_value =
+          this.tradeService.blotterSubscriptionDataObj.blotterSubscriptionResponse.totalTradeVolume;
+      }
+    });
+  }
+
+  isEmptyObject(obj) {
+    return obj && Object.keys(obj).length === 0;
+  }
+
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

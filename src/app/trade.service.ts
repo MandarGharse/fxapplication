@@ -9,26 +9,24 @@ import { TradeSummary } from './domain/TradeSummary';
 export class TradeService {
   private blotterSubscriptionDataMessage: BehaviorSubject<Object> =
     new BehaviorSubject<Object>(new Array());
-  // private blotterFillDataMessage: BehaviorSubject<Object> =
-  // new BehaviorSubject<Object>(new Array());
+
   private tradeResolutionDataMessage: BehaviorSubject<Object> =
     new BehaviorSubject<Object>(new Array());
 
   blotterSubscriptionDataObservable =
     this.blotterSubscriptionDataMessage.asObservable();
-  // blotterFillDataObservable = this.blotterFillDataMessage.asObservable();
+
   tradeResolutionDataObservable =
     this.tradeResolutionDataMessage.asObservable();
+
+  public blotterSubscriptionDataObj;
 
   constructor() {}
 
   blotterSubscriptionDataReceived(dataObj) {
+    this.blotterSubscriptionDataObj = dataObj;
     this.blotterSubscriptionDataMessage.next(dataObj);
   }
-
-  // blotterFillDataReceived(dataObj) {
-  //   this.blotterFillDataMessage.next(dataObj);
-  // }
 
   tradeResolutionDataReceived(dataObj) {
     this.tradeResolutionDataMessage.next(dataObj);

@@ -140,7 +140,7 @@ export class AgGridBlotterSSRMComponent {
             if (!this.isEmptyObject(dataObj)) {
               console.log(
                 'rendering GRID with new trades. trade count : ' +
-                  dataObj.tradeResolutionResponse.le
+                  dataObj.tradeResolutionResponse.length
               );
 
               for (

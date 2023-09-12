@@ -10,8 +10,13 @@ import {
   IViewportDatasource,
   RowModelType,
   ValueFormatterParams,
+  GridOptions,
 } from 'ag-grid-community';
 import 'ag-grid-enterprise';
+import { WebsocketService } from '../websocket.service';
+import { TradeService } from '../trade.service';
+import { GridApi } from 'ag-grid';
+import { Trade } from '../domain/Trade';
 
 // @Component({
 //   selector: 'app-ag-grid-blotter-vrm',
@@ -19,8 +24,10 @@ import 'ag-grid-enterprise';
 //   styleUrls: ['./ag-grid-blotter-vrm.component.css']
 // })
 
-declare function createMockServer(): any;
-declare function createViewportDatasource(mockServer: any): IViewportDatasource;
+declare function createViewportDatasource(
+  websocketService: any,
+  tradeService: any
+): IViewportDatasource;
 
 @Component({
   selector: 'app-ag-grid-blotter-vrm',
@@ -28,8 +35,7 @@ declare function createViewportDatasource(mockServer: any): IViewportDatasource;
     <ag-grid-angular
       style="width: 100%; height: 50%;"
       class="ag-theme-alpine"
-      [columnDefs]="columnDefs"
-      [defaultColDef]="defaultColDef"
+      [gridOptions]="gridOptions"
       [rowSelection]="rowSelection"
       [rowModelType]="rowModelType"
       [getRowId]="getRowId"
@@ -40,68 +46,60 @@ declare function createViewportDatasource(mockServer: any): IViewportDatasource;
 })
 export class AgGridBlotterVrmComponent {
   public columnDefs: ColDef[] = [
-    // this col shows the row index, doesn't use any data from the row
-    {
-      headerName: '#',
-      maxWidth: 80,
-      cellRenderer: RowIndexRenderer,
-    },
-    { field: 'code', maxWidth: 90 },
-    { field: 'name', minWidth: 220 },
-    {
-      field: 'bid',
-      cellClass: 'cell-number',
-      valueFormatter: numberFormatter,
-      cellRenderer: 'agAnimateShowChangeCellRenderer',
-    },
-    {
-      field: 'mid',
-      cellClass: 'cell-number',
-      valueFormatter: numberFormatter,
-      cellRenderer: 'agAnimateShowChangeCellRenderer',
-    },
-    {
-      field: 'ask',
-      cellClass: 'cell-number',
-      valueFormatter: numberFormatter,
-      cellRenderer: 'agAnimateShowChangeCellRenderer',
-    },
-    {
-      field: 'volume',
-      cellClass: 'cell-number',
-      cellRenderer: 'agAnimateSlideCellRenderer',
-    },
+    { field: 'ccyPair', suppressSizeToFit: false },
+    { field: 'buySell', suppressSizeToFit: false },
+    { field: 'dealtCcy', suppressSizeToFit: false },
+    { field: 'dealtAmount', suppressSizeToFit: false },
+    { field: 'counterAmount', minWidth: 1200, suppressSizeToFit: false },
   ];
   public defaultColDef: ColDef = {
+    editable: true,
+    enablePivot: true,
+    enableValue: true,
+    sortable: true,
+    resizable: true,
+    filter: true,
     flex: 1,
     minWidth: 140,
-    resizable: true,
   };
+  gridOptions: GridOptions = {
+    columnDefs: this.columnDefs,
+    defaultColDef: this.defaultColDef,
+    suppressRowClickSelection: true,
+    groupSelectsChildren: true,
+    rowSelection: 'multiple',
+    rowGroupPanelShow: 'always',
+    pivotPanelShow: 'always',
+    paginationAutoPageSize: true,
+    // viewportRowModelPageSize: 5,
+  };
+
   public rowSelection: 'single' | 'multiple' = 'multiple';
   public rowModelType: RowModelType = 'viewport';
   public getRowId: GetRowIdFunc = (params: GetRowIdParams) => {
     // the code is unique, so perfect for the id
     return params.data.code;
   };
-  public rowData!: any[];
+  public rowData!: Trade[];
+  public api: GridApi;
+  params: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public websocketService: WebsocketService,
+    public tradeService: TradeService
+  ) {}
 
   onGridReady(params: GridReadyEvent) {
-    this.http
-      .get<any[]>('https://www.ag-grid.com/example-assets/stocks.json')
-      .subscribe((data) => {
-        // set up a mock server - real code will not do this, it will contact your
-        // real server to get what it needs
-        var mockServer = createMockServer();
-        mockServer.init(data);
-        var viewportDatasource = createViewportDatasource(mockServer);
-        params.api!.setViewportDatasource(viewportDatasource);
-        // put the 'size cols to fit' into a timeout, so that the scroll is taken into consideration
-        setTimeout(function () {
-          params.api!.sizeColumnsToFit();
-        }, 100);
-      });
+    var viewportDatasource = createViewportDatasource(
+      this.websocketService,
+      this.tradeService
+    );
+    params.api!.setViewportDatasource(viewportDatasource);
+    // put the 'size cols to fit' into a timeout, so that the scroll is taken into consideration
+    setTimeout(function () {
+      params.api!.sizeColumnsToFit();
+    }, 100);
   }
 }
 
