@@ -31,7 +31,7 @@
               "./node_modules/ag-grid/dist/styles/ag-theme-balham.css"
             ],
             "scripts": ["./node_modules/jquery/dist/jquery.js",
-            "./node_modules/bootstrap/dist/js/bootstrap.js","./src/app/ag-grid-blotter-vrm/mock-server.js","./src/app/ag-grid-blotter-vrm/viewport-datasource.js"]
+            "./node_modules/bootstrap/dist/js/bootstrap.js","./src/app/ag-grid-blotter-vrm/viewport-datasource.js"]
           },
           "configurations": {
             "production": {
