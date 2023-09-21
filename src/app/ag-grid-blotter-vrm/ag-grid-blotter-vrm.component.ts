@@ -68,7 +68,7 @@ export class AgGridBlotterVrmComponent {
     suppressRowClickSelection: true,
     groupSelectsChildren: true,
     rowSelection: 'multiple',
-    rowGroupPanelShow: 'always',
+    // rowGroupPanelShow: 'always',
     pivotPanelShow: 'always',
     paginationAutoPageSize: true,
     // viewportRowModelPageSize: 5,

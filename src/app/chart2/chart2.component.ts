@@ -3,11 +3,11 @@ import Chart from 'chart.js/auto';
 import { TradeService } from '../trade.service';
 
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css'],
+  selector: 'app-chart2',
+  templateUrl: './chart2.component.html',
+  styleUrls: ['./chart2.component.css'],
 })
-export class ChartComponent {
+export class Chart2Component {
   title = 'ng-chart';
   chart: any = [];
   myChartData = [];
@@ -22,8 +22,8 @@ export class ChartComponent {
       'Fixing Date Today',
     ];
 
-    this.chart = new Chart('canvas', {
-      type: 'doughnut',
+    this.chart = new Chart('canvas2', {
+      type: 'pie',
       data: {
         labels: myChartLabels,
         datasets: [
@@ -36,15 +36,6 @@ export class ChartComponent {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-          legend: {
-              display: true,
-              position: "left",
-              labels: {
-                  color: 'rgb(255, 99, 132)'
-              }
-          }
-        }
       },
     });
 

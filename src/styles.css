@@ -20,15 +20,17 @@ body {
 }
 
 .internalMatGrid {
-  border: 1px solid rgb(0, 26, 255);
+  position: absolute;
+  border: 1px solid rgba(146, 161, 8, 0.322);
+  left: 0px;
+  bottom: 5px;
 }
 
 .mymattile-kpi-align-left {
   position: absolute;
-  left: 5px;
-  bottom: 5px;
+  left: 0px;
   font-size: medium;
-  color: rgb(7, 80, 4);
+  color: rgb(14, 151, 9);
 }
 
 .mattile-footer-align-left {
@@ -38,4 +40,9 @@ body {
   font-size: medium;
   color: rgb(7, 80, 4);
   font-weight: bold;
+}
+mat-grid-tile {
+  /* background: whitesmoke; */
+  left: 5px;
+  border: 1px solid rgba(146, 161, 8, 0.322);
 }
