@@ -36,6 +36,15 @@ export class Chart2Component {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          legend: {
+              display: true,
+              position: "left",
+              labels: {
+                  color: 'rgb(255, 99, 132)'
+              }
+          }
+        }
       },
     });
 
@@ -109,26 +118,4 @@ export class Chart2Component {
     return obj && Object.keys(obj).length === 0;
   }
 
-  ngOnInit_delete() {
-    this.chart = new Chart('canvas', {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
 }

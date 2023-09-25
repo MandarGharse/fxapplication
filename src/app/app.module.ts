@@ -14,6 +14,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FooterComponent } from './footer/footer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 import { AgGridBlotterSSRMComponent } from './ag-grid-blotter-ssrm/ag-grid-blotter-ssrm.component';
 import { AgGridBlotterVrmComponent } from './ag-grid-blotter-vrm/ag-grid-blotter-vrm.component';
 import { Chart2Component } from './chart2/chart2.component';
@@ -38,6 +39,7 @@ import { Chart2Component } from './chart2/chart2.component';
     MatGridListModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

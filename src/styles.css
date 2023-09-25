@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "ag-grid-community/styles/ag-grid.css";
 @import "ag-grid-community/styles/ag-theme-alpine.css";
+@import "~material-icons/iconfont/material-icons.css";
 
 html,
 body {
@@ -38,8 +39,8 @@ body {
   left: 5px;
   bottom: 5px;
   font-size: medium;
-  color: rgb(7, 80, 4);
-  font-weight: bold;
+  color: rgb(25, 14, 73);
+  font-weight: 600;
 }
 mat-grid-tile {
   /* background: whitesmoke; */

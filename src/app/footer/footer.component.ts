@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
 import { TradeService } from '../trade.service';
 
 @Component({
@@ -26,6 +27,10 @@ export class FooterComponent {
           this.tradeService.blotterSubscriptionDataObj.blotterSubscriptionResponse.totalTradeVolume;
       }
     });
+  }
+
+  onMatIconExpandLessClick()  {
+    console.log("onMatIconExpandLessClick clicked");
   }
 
   isEmptyObject(obj) {
