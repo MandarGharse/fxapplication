@@ -12,7 +12,7 @@
       <div class="whats-in-the-boooooooooox">
         <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
           <mat-grid-tile
-            *ngFor="let card of tileCards; let indexOfelement = index"
+            *ngFor="let card of tiles; let indexOfelement = index"
             style="border: dotted 2px red"
           >
             <app-tile [tile]="tiles[indexOfelement]"></app-tile>
@@ -29,7 +29,7 @@
       <div class="whats-in-the-boooooooooox">
         <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
           <mat-grid-tile
-            *ngFor="let card of spotTileCards; let indexOfelement = index"
+            *ngFor="let card of tiles; let indexOfelement = index"
             style="border: dotted 2px rgb(0, 255, 0)"
           >
             <app-tile [tile]="tiles[indexOfelement]"></app-tile>

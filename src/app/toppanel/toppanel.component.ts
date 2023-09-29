@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TileComponent } from '../tile/tile.component';
 import { Tile } from '../domain/Tile';
 
 @Component({
@@ -18,31 +17,11 @@ export class ToppanelComponent {
     new Tile(),
     new Tile(),
   ];
-  tileCards: TileComponent[] = [
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-  ];
-  spotTileCards: TileComponent[] = [
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-    new TileComponent(),
-  ];
 
   ngOnInit() {
     this.tiles[0].ccyPair = 'ID-0';
     this.tiles[0].ccyPair = 'EUR/USD';
-    this.tiles[0].bidRate = '1.1234';
+    this.tiles[0].bidRate = '1.12341';
     this.tiles[0].askRate = '1.1235';
 
     this.tiles[1].ccyPair = 'ID-1';
