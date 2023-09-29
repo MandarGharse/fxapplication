@@ -1,0 +1,41 @@
+<mat-tab-group animationDuration="0ms">
+  <mat-tab label="Outstanding FX">
+    <div class="whats-in-the-boooooooooox">
+      <mat-grid-list cols="1" rowHeight="50px">
+        <mat-grid-tile
+          ><app-kpi class="left-align-forced"></app-kpi
+        ></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <ng-template matTabContent>
+      <div class="whats-in-the-boooooooooox" id="111">
+        <mat-grid-list cols="2" rowHeight="200px">
+          <mat-grid-tile
+            ><app-chart class="default-centered"></app-chart
+          ></mat-grid-tile>
+          <mat-grid-tile
+            ><app-chart2 class="default-centered"></app-chart2
+          ></mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </ng-template>
+    <div class="whats-in-the-boooooooooox">
+      <mat-grid-list cols="1" rowHeight="500px">
+        <mat-grid-tile
+          ><app-ag-grid-blotter-vrm
+            class="left-align-forced"
+          ></app-ag-grid-blotter-vrm
+        ></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="whats-in-the-boooooooooox">
+      <mat-grid-list cols="1" rowHeight="50px">
+        <mat-grid-tile
+          ><app-footer class="left-align-forced"></app-footer
+        ></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-tab>
+  <mat-tab label="FX Position">TODO FX Position</mat-tab>
+  <mat-tab label="Historical FX">TODO Historical FX</mat-tab>
+</mat-tab-group>

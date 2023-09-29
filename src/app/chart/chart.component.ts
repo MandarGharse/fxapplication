@@ -38,13 +38,13 @@ export class ChartComponent {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-              display: true,
-              position: "left",
-              labels: {
-                  color: 'rgb(255, 99, 132)'
-              }
-          }
-        }
+            display: true,
+            position: 'left',
+            labels: {
+              color: 'rgb(255, 99, 132)',
+            },
+          },
+        },
       },
     });
 
@@ -117,5 +117,4 @@ export class ChartComponent {
   isEmptyObject(obj) {
     return obj && Object.keys(obj).length === 0;
   }
-
 }

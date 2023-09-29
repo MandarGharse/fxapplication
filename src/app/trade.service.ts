@@ -25,6 +25,11 @@ export class TradeService {
 
   blotterSubscriptionDataReceived(dataObj) {
     this.blotterSubscriptionDataObj = dataObj;
+    console.log(
+      'blotterSubscriptionDataReceived >>> ' +
+        this.blotterSubscriptionDataMessage
+    );
+    console.log('blotterSubscriptionDataReceived >>> ' + dataObj);
     this.blotterSubscriptionDataMessage.next(dataObj);
   }
 

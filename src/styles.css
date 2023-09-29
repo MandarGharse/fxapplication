@@ -7,7 +7,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  padding: 5px;
+  padding: 1px;
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
 }
@@ -21,10 +21,7 @@ body {
 }
 
 .internalMatGrid {
-  position: absolute;
-  border: 1px solid rgba(146, 161, 8, 0.322);
-  left: 0px;
-  bottom: 5px;
+  min-width: 80%;
 }
 
 .mymattile-kpi-align-left {
@@ -36,14 +33,21 @@ body {
 
 .mattile-footer-align-left {
   position: absolute;
-  left: 5px;
-  bottom: 5px;
+  left: 0px;
   font-size: medium;
-  color: rgb(25, 14, 73);
+  color: rgb(14, 151, 9);
   font-weight: 600;
 }
-mat-grid-tile {
-  /* background: whitesmoke; */
-  left: 5px;
-  border: 1px solid rgba(146, 161, 8, 0.322);
+
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+  text-align: left;
+  vertical-align: text-top;
+}
+.mat-tab-header {
+  background-color: #424242;
+}
+.remove-border-bottom .mat-tab-header {
+  border-bottom: none;
 }

@@ -91,4 +91,15 @@ export class AppComponent implements OnInit {
       this.tradeService.tradeResolutionDataReceived(dataObj);
     });
   }
+
+  isChartHidden: boolean = false;
+  togglecharts() {
+    if (this.isChartHidden) {
+      // hide charts
+      this.isChartHidden = false;
+    } else {
+      // show charts
+      this.isChartHidden = true;
+    }
+  }
 }

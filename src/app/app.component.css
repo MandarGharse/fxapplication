@@ -1,0 +1,21 @@
+.whats-in-the-boooooooooox {
+  margin: 10px;
+  /* border: dotted orange; */
+  border: 2px dotted #32a1ce;
+}
+
+.default-centered {
+  /* just to show there is no styling here */
+}
+
+.left-align-forced {
+  width: 100%;
+}
+
+.right-align-forced {
+  width: 100%;
+  text-align: right;
+}
+.mat-tab-header {
+  background-color: #424242;
+}

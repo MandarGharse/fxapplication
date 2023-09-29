@@ -18,12 +18,6 @@ import { TradeService } from '../trade.service';
 import { GridApi } from 'ag-grid';
 import { Trade } from '../domain/Trade';
 
-// @Component({
-//   selector: 'app-ag-grid-blotter-vrm',
-//   templateUrl: './ag-grid-blotter-vrm.component.html',
-//   styleUrls: ['./ag-grid-blotter-vrm.component.css']
-// })
-
 declare function createViewportDatasource(
   websocketService: any,
   tradeService: any
@@ -33,7 +27,7 @@ declare function createViewportDatasource(
   selector: 'app-ag-grid-blotter-vrm',
   template: `
     <ag-grid-angular
-      style="width: 100%; height: 50%;"
+      style="width: 100%; height: 500px;"
       class="ag-theme-alpine"
       [gridOptions]="gridOptions"
       [rowSelection]="rowSelection"
@@ -44,6 +38,12 @@ declare function createViewportDatasource(
     ></ag-grid-angular>
   `,
 })
+
+// @Component({
+//   selector: 'app-ag-grid-blotter-vrm',
+//   templateUrl: './ag-grid-blotter-vrm.component.html',
+//   styleUrls: ['./ag-grid-blotter-vrm.component.css'],
+// })
 export class AgGridBlotterVrmComponent {
   public columnDefs: ColDef[] = [
     { field: 'ccyPair', suppressSizeToFit: false },

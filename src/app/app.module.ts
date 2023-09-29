@@ -18,6 +18,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { AgGridBlotterSSRMComponent } from './ag-grid-blotter-ssrm/ag-grid-blotter-ssrm.component';
 import { AgGridBlotterVrmComponent } from './ag-grid-blotter-vrm/ag-grid-blotter-vrm.component';
 import { Chart2Component } from './chart2/chart2.component';
+import { TestComponent } from './test/test.component';
+import { Navigation1Component } from './navigation1/navigation1.component';
+import { Navigation2Component } from './navigation2/navigation2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -29,8 +34,12 @@ import { Chart2Component } from './chart2/chart2.component';
     AgGridBlotterSSRMComponent,
     AgGridBlotterVrmComponent,
     Chart2Component,
+    TestComponent,
+    Navigation1Component,
+    Navigation2Component,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -40,6 +49,7 @@ import { Chart2Component } from './chart2/chart2.component';
     MatTabsModule,
     MatCheckboxModule,
     MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
