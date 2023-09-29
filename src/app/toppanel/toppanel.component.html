@@ -1,0 +1,41 @@
+<mat-tab-group
+  animationDuration="0ms"
+  mat-stretch-tabs="false"
+  mat-align-tabs="start"
+  color="transparent"
+>
+  <mat-tab label="Tiles" style="border: none">
+    <ng-template mat-tab-label>
+      <img src="../assets/img/tiles.png" width="100px" height="30px" />
+    </ng-template>
+    <ng-template matTabContent>
+      <div class="whats-in-the-boooooooooox">
+        <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
+          <mat-grid-tile
+            *ngFor="let card of tileCards; let indexOfelement = index"
+            style="border: dotted 2px red"
+          >
+            <app-tile [tile]="tiles[indexOfelement]"></app-tile>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Spot Ladders"
+    ><ng-template mat-tab-label>
+      <img src="../assets/img/spotladders.png" width="100px" height="30px" />
+    </ng-template>
+    <ng-template matTabContent>
+      <div class="whats-in-the-boooooooooox">
+        <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
+          <mat-grid-tile
+            *ngFor="let card of spotTileCards; let indexOfelement = index"
+            style="border: dotted 2px rgb(0, 255, 0)"
+          >
+            <app-tile [tile]="tiles[indexOfelement]"></app-tile>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

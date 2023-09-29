@@ -23,6 +23,8 @@ import { Navigation1Component } from './navigation1/navigation1.component';
 import { Navigation2Component } from './navigation2/navigation2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { ToppanelComponent } from './toppanel/toppanel.component';
+import { TileComponent } from './tile/tile.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { MatButtonModule } from '@angular/material/button';
     TestComponent,
     Navigation1Component,
     Navigation2Component,
+    ToppanelComponent,
+    TileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
