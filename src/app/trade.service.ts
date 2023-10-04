@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Trade } from './domain/Trade';
 import { BehaviorSubject } from 'rxjs';
-import { TradeSummary } from './domain/TradeSummary';
 
 @Injectable({
   providedIn: 'root',

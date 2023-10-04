@@ -26,19 +26,6 @@ function createViewportDatasource(websocketService, tradeService) {
                         this.params.setRowData(rowDataMap);
                     }
                 }
-                
-                // (dataObj) => {
-                //     var rowDataMap = {};
-                //     console.log("firstRow:"+this.firstRow+" lastRow:"+this.lastRow);
-                //     for (var i = this.firstRow; i <= this.lastRow; i++) {
-                //         rowDataMap[i] = JSON.parse('{"ccyPair":"USD/MXN","buySell":"Buy","dealtCcy":"MXN","dealtAmount":145077.64053717031,"counterAmount":1156503.6693648659,"tradeDate":"20230911","valueDate":"20230911","fixingDate":"20230912","usdAmount":2086791.4404210753}');
-                //     }
-                //     const tradeCount = this.tradeService.blotterSubscriptionDataObj.blotterSubscriptionResponse.totalTradeCount;
-                //     this.params.setRowCount(tradeCount);
-                //     this.params.setRowData(rowDataMap);
-                //     //this.params.setRowData(dataObj.tradeResolutionResponse.trades);
-                //     console.log("tradeCount:"+tradeCount+", rowDataMap>>>"+dataObj.tradeResolutionResponse.trades);
-                // }
             );
 
         }

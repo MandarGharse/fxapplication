@@ -1,4 +1,40 @@
-{{ tile.id }}
-{{ tile.ccyPair }}
-{{ tile.bidRate }}
-{{ tile.askRate }}
+<mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
+  <mat-grid-tile
+    *ngFor="let tile of tiles; let indexOfelement = index"
+    style="border: solid 0.5px rgb(2, 1, 19)"
+  >
+    <div
+      style="height: 200px; width: 100%; background-color: rgb(255, 255, 255)"
+    >
+      <mat-grid-list cols="2" rowHeight="25%" gutterSize="0px">
+        <mat-grid-tile colspan="2" rowspan="1">
+          {{ tile.ccyPair }}
+        </mat-grid-tile>
+        <mat-grid-tile
+          colspan="1"
+          rowspan="3"
+          style="border: solid 0.5px rgba(81, 96, 97, 0.808)"
+        >
+          {{ tile.bidRate }}
+          <img
+            src="../assets/img/{{ tile.image }}"
+            width="100px"
+            height="40px"
+          />
+        </mat-grid-tile>
+        <mat-grid-tile
+          colspan="1"
+          rowspan="3"
+          style="border: solid 0.5px rgba(81, 96, 97, 0.808)"
+        >
+          {{ tile.askRate }}
+          <img
+            src="../assets/img/{{ tile.image }}"
+            width="100px"
+            height="40px"
+          />
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

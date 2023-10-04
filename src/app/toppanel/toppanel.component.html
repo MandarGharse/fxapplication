@@ -6,36 +6,37 @@
 >
   <mat-tab label="Tiles" style="border: none">
     <ng-template mat-tab-label>
-      <img src="../assets/img/tiles.png" width="100px" height="30px" />
+      <img src="../assets/img/tiles.png" width="100px" height="40px" />
     </ng-template>
     <ng-template matTabContent>
       <div class="whats-in-the-boooooooooox">
-        <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
-          <mat-grid-tile
-            *ngFor="let card of tiles; let indexOfelement = index"
-            style="border: dotted 2px red"
-          >
-            <app-tile [tile]="tiles[indexOfelement]"></app-tile>
-          </mat-grid-tile>
-        </mat-grid-list>
+        <!-- <app-tile [tiles]="tiles"></app-tile> -->
+        <app-tile></app-tile>
       </div>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Spot Ladders"
+  <mat-tab label="Charts"
     ><ng-template mat-tab-label>
-      <img src="../assets/img/spotladders.png" width="100px" height="30px" />
+      <img src="../assets/img/charts.png" width="100px" height="40px" />
     </ng-template>
     <ng-template matTabContent>
-      <div class="whats-in-the-boooooooooox">
-        <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
-          <mat-grid-tile
-            *ngFor="let card of tiles; let indexOfelement = index"
-            style="border: dotted 2px rgb(0, 255, 0)"
+      <mat-grid-list cols="1" rowHeight="200px" gutterSize="0px">
+        <mat-grid-tile style="border: solid 0.5px rgb(2, 1, 19)">
+          <div
+            style="
+              height: 200px;
+              width: 100%;
+              background-color: rgb(255, 255, 255);
+            "
           >
-            <app-tile [tile]="tiles[indexOfelement]"></app-tile>
-          </mat-grid-tile>
-        </mat-grid-list>
-      </div>
+            <img
+              src="../assets/img/underconstruction.png"
+              width="100px"
+              height="40px"
+            />
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

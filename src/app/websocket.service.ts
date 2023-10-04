@@ -38,7 +38,6 @@ export class WebsocketService {
 
         // TODO : clients should subscribe for WS ready message and request directly
         this.sendBlotterSubscription();
-        // this.sendBlotterFill(1, 20);
       },
       () => {}
     );

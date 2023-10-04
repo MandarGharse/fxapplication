@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { ToppanelComponent } from './toppanel/toppanel.component';
 import { TileComponent } from './tile/tile.component';
+import { BottompanelComponent } from './bottompanel/bottompanel.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { TileComponent } from './tile/tile.component';
     Navigation2Component,
     ToppanelComponent,
     TileComponent,
+    BottompanelComponent,
   ],
   imports: [
     BrowserAnimationsModule,
