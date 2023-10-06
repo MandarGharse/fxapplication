@@ -71,7 +71,7 @@ export class TileComponent {
     this.tiles[5].valueDate = '10032023';
 
     this.tiles[6].id = 'ID-6';
-    this.tiles[6].ccyPair = 'CAD/CHF';
+    this.tiles[6].ccyPair = 'EUR/NOK';
     this.tiles[6].valueDate = '10032023';
 
     this.tiles[7].id = 'ID-7';
@@ -109,7 +109,12 @@ export class TileComponent {
             if (
               dataObj.pricingSubscriptionResponse.id == this.tiles[index].id
             ) {
-              console.log('found matching id ' + this.tiles[index].id);
+              console.log(
+                'found matching id ' +
+                  this.tiles[index].id +
+                  '. index : ' +
+                  index
+              );
               console.log(
                 'oldBidRate:' +
                   this.tiles[index].bidRate +
@@ -131,7 +136,9 @@ export class TileComponent {
                 'done setting bidRate:' +
                   dataObj.pricingSubscriptionResponse.price.bidRate +
                   ' askRate:' +
-                  dataObj.pricingSubscriptionResponse.price.askRate
+                  dataObj.pricingSubscriptionResponse.price.askRate +
+                  ' for tile index:' +
+                  index
               );
               break;
             }
