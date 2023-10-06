@@ -90,14 +90,21 @@ export class BottompanelComponent implements OnInit {
     });
   }
 
-  isChartHidden: boolean = false;
+  isChartVisible: boolean = false;
   togglecharts() {
-    if (this.isChartHidden) {
+    console.log(
+      'toggle charts called. current status isChartVisible ' +
+        this.isChartVisible
+    );
+    if (this.isChartVisible) {
       // hide charts
-      this.isChartHidden = false;
+      this.isChartVisible = false;
     } else {
       // show charts
-      this.isChartHidden = true;
+      this.isChartVisible = true;
     }
+    console.log(
+      'toggle charts updated status isChartVisible to ' + this.isChartVisible
+    );
   }
 }

@@ -1,37 +1,44 @@
 <mat-grid-list cols="4" rowHeight="200px" gutterSize="0px">
   <mat-grid-tile
     *ngFor="let tile of tiles; let indexOfelement = index"
-    style="border: solid 0.5px rgb(2, 1, 19)"
+    style="border: solid 0.5px rgb(128, 128, 133)"
   >
-    <div
-      style="height: 200px; width: 100%; background-color: rgb(255, 255, 255)"
-    >
-      <mat-grid-list cols="2" rowHeight="25%" gutterSize="0px">
-        <mat-grid-tile colspan="2" rowspan="1">
-          {{ tile.ccyPair }}
+    <div style="height: 200px; width: 100%; background-color: rgb(0, 0, 0)">
+      <mat-grid-list
+        cols="2"
+        rowHeight="25%"
+        gutterSize="0px"
+        style="border: solid 0.5px rgb(128, 128, 133)"
+      >
+        <mat-grid-tile
+          colspan="2"
+          rowspan="1"
+          style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)"
+        >
+          <b>{{ tile.ccyPair }}</b>
         </mat-grid-tile>
         <mat-grid-tile
           colspan="1"
           rowspan="3"
-          style="border: solid 0.5px rgba(81, 96, 97, 0.808)"
+          style="border: solid 1px rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
-          {{ tile.bidRate }}
+          <b>{{ tile.bidRate }}</b>
           <img
-            src="../assets/img/{{ tile.image }}"
-            width="100px"
-            height="40px"
+            src="../assets/img/{{ tile.pricetickImage }}"
+            width="20px"
+            height="20px"
           />
         </mat-grid-tile>
         <mat-grid-tile
           colspan="1"
           rowspan="3"
-          style="border: solid 0.5px rgba(81, 96, 97, 0.808)"
+          style="border: solid 1px rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
-          {{ tile.askRate }}
+          <b>{{ tile.askRate }}</b>
           <img
-            src="../assets/img/{{ tile.image }}"
-            width="100px"
-            height="40px"
+            src="../assets/img/{{ tile.pricetickImage }}"
+            width="20px"
+            height="20px"
           />
         </mat-grid-tile>
       </mat-grid-list>

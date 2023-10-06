@@ -125,8 +125,8 @@ export class TileComponent {
                 this.tiles[index].bidRate >
                 dataObj.pricingSubscriptionResponse.price.bidRate
               )
-                this.tiles[index].image = 'pricetickdown.png';
-              else this.tiles[index].image = 'pricetickup.png';
+                this.tiles[index].pricetickImage = 'pricetickdownnew.jpg';
+              else this.tiles[index].pricetickImage = 'pricetickupnew.jpg';
               this.tiles[index].bidRate =
                 dataObj.pricingSubscriptionResponse.price.bidRate;
               this.tiles[index].askRate =

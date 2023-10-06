@@ -4,5 +4,5 @@ export class Tile {
   valueDate: string;
   bidRate: string;
   askRate: string;
-  image: string;
+  pricetickImage: string;
 }

@@ -9,7 +9,7 @@
       <img src="../assets/img/live.png" width="100px" height="30px" />
     </ng-template>
     <ng-template matTabContent>
-      <div class="whats-in-the-boooooooooox">
+      <div class="div-style">
         <button mat-raised-button color="primary" style="margin: 5px">
           My Trades
         </button>
@@ -25,10 +25,10 @@
           Charts
         </button>
       </div>
-      <div class="whats-in-the-boooooooooox">
+      <div class="div-style">
         <app-kpi class="left-align-forced"></app-kpi>
       </div>
-      <div class="whats-in-the-boooooooooox" id="111" [hidden]="isChartHidden">
+      <div class="div-style" id="111" *ngIf="isChartVisible">
         <mat-grid-list cols="2" rowHeight="200px">
           <mat-grid-tile
             ><app-chart class="default-centered"></app-chart
@@ -38,12 +38,12 @@
           ></mat-grid-tile>
         </mat-grid-list>
       </div>
-      <div class="whats-in-the-boooooooooox">
+      <div class="div-style">
         <app-ag-grid-blotter-vrm
           class="left-align-forced"
         ></app-ag-grid-blotter-vrm>
       </div>
-      <div class="whats-in-the-boooooooooox">
+      <div class="div-style">
         <app-footer class="left-align-forced"></app-footer>
       </div>
     </ng-template>
@@ -53,7 +53,7 @@
       <img src="../assets/img/historical.png" width="100px" height="30px" />
     </ng-template>
     <ng-template matTabContent>
-      <div class="whats-in-the-boooooooooox">Under Construction ...</div>
+      <div class="div-style">Under Construction ...</div>
     </ng-template>
   </mat-tab>
   <mat-tab label="Reports"
@@ -61,7 +61,7 @@
       <img src="../assets/img/reports.png" width="100px" height="30px" />
     </ng-template>
     <ng-template matTabContent>
-      <div class="whats-in-the-boooooooooox">Under Construction ...</div>
+      <div class="div-style">Under Construction ...</div>
     </ng-template></mat-tab
   >
 </mat-tab-group>
