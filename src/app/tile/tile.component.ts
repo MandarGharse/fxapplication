@@ -24,6 +24,17 @@ export class TileComponent {
     new Tile(),
   ];
 
+  ccyPairList: Array<any> = [
+    { code: 1, name: "EUR/USD" },
+    { code: 2, name: "EUR/GBP" },
+    { code: 3, name: "EUR/MXN" },
+    { code: 1, name: "USD/JPY" },
+    { code: 2, name: "GBP/USD" },
+    { code: 3, name: "USD/INR" },
+    { code: 1, name: "EUR/NOK" },
+    { code: 2, name: "USD/RUB" },
+  ];
+  
   constructor(
     private pricingWebsocketService: PricingWebsocketService,
     private pricingService: PricingService
