@@ -11,14 +11,32 @@
         style="border: solid 0.5px rgb(128, 128, 133)"
       >
         <mat-grid-tile
-          colspan="2"
+          colspan="1"
           rowspan="1"
           style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
           <select>
-            <option *ngFor="let ccyPair of this.ccyPairList;let i = index" 
-            value="{{ccyPair.name}}" [selected]="i == indexOfelement">
-              {{ccyPair.name}}
+            <option
+              *ngFor="let ccyPair of this.ccyPairList; let i = index"
+              value="{{ ccyPair.name }}"
+              [selected]="i == indexOfelement"
+            >
+              {{ ccyPair.name }}
+            </option>
+          </select>
+        </mat-grid-tile>
+        <mat-grid-tile
+          colspan="1"
+          rowspan="1"
+          style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)"
+        >
+          <select>
+            <option
+              *ngFor="let account of this.accountList; let i = index"
+              value="{{ account.name }}"
+              [selected]="i == indexOfelement"
+            >
+              {{ account.name }}
             </option>
           </select>
         </mat-grid-tile>
