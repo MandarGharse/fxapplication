@@ -26,6 +26,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ToppanelComponent } from './toppanel/toppanel.component';
 import { TileComponent } from './tile/tile.component';
 import { BottompanelComponent } from './bottompanel/bottompanel.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -56,8 +60,12 @@ import { BottompanelComponent } from './bottompanel/bottompanel.component';
     MatCheckboxModule,
     MatIconModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [],
+  providers: [MatDatepickerModule, MatNativeDateModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

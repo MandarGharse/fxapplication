@@ -42,7 +42,7 @@
         </mat-grid-tile>
         <mat-grid-tile
           colspan="1"
-          rowspan="3"
+          rowspan="2"
           style="border: solid 1px rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
           <b>{{ tile.bidRate }}</b>
@@ -54,7 +54,7 @@
         </mat-grid-tile>
         <mat-grid-tile
           colspan="1"
-          rowspan="3"
+          rowspan="2"
           style="border: solid 1px rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
           <b>{{ tile.askRate }}</b>
@@ -63,6 +63,31 @@
             width="20px"
             height="20px"
           />
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field>
+            <mat-label style="font-size: smaller">v/d</mat-label>
+            <input matInput [matDatepicker]="pickervaluedate" />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickervaluedate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker
+              #pickervaluedate
+              panelClass="datepickerOne"
+            ></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field>
+            <mat-label style="font-size: smaller">fix</mat-label>
+            <input matInput [matDatepicker]="pickerfixingdate" />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerfixingdate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerfixingdate></mat-datepicker>
+          </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
     </div>

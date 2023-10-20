@@ -52,3 +52,17 @@ body {
 .remove-border-bottom .mat-tab-header {
   border-bottom: none;
 }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.datepickerOne .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+  border-color: darkgreen;
+}
