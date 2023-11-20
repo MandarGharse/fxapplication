@@ -63,6 +63,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.datepickerOne .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-  border-color: darkgreen;
+.datepickerOne {
+  background-color: #000;
 }
