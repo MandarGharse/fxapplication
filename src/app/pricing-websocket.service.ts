@@ -11,6 +11,9 @@ export class PricingWebsocketService {
   stompClient: any;
   responseSubject = new Subject<String>();
   webSocketEndpoint: string = 'http://localhost:8080/fxapp-ws';
+  // webSocketEndpoint: string = 'http://16.16.161.87:8080/fxapp-ws';
+  // webSocketEndpoint: string = 'http://127.0.0.1:8080/fxapp-ws';
+
   userName: string;
 
   connect(subscribers: Subscriber[] = null) {
