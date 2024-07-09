@@ -11,11 +11,11 @@
         style="border: solid 0.5px rgb(128, 128, 133)"
       >
         <mat-grid-tile
-          colspan="2"
+          colspan="1"
           rowspan="1"
           style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
-          <select>
+          <select class="big1">
             <option *ngFor="let ccyPair of this.ccyPairList;let i = index" 
             value="{{ccyPair.name}}" [selected]="i == indexOfelement">
               {{ccyPair.name}}
@@ -24,14 +24,26 @@
         </mat-grid-tile>
         <mat-grid-tile
           colspan="1"
+          rowspan="1"
+          style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)"
+        >
+          <select class="big1">
+            <option *ngFor="let account of this.accountList;let i = index" 
+            value="{{account.name}}" [selected]="i == indexOfelement">
+              {{account.name}}
+            </option>
+          </select>
+        </mat-grid-tile>
+        <mat-grid-tile
+          colspan="1"
           rowspan="3"
           style="border: solid 1px rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
-          <b>{{ tile.bidRate }}</b>
+          <b class="big2">{{ tile.bidRate }}</b>
           <img
             src="../assets/img/{{ tile.pricetickImage }}"
-            width="20px"
-            height="20px"
+            width="25px"
+            height="30px"
           />
         </mat-grid-tile>
         <mat-grid-tile
@@ -39,11 +51,11 @@
           rowspan="3"
           style="border: solid 1px rgb(0, 0, 0); color: rgb(255, 255, 255)"
         >
-          <b>{{ tile.askRate }}</b>
+        <b class="big2">{{ tile.askRate }}</b>
           <img
             src="../assets/img/{{ tile.pricetickImage }}"
-            width="20px"
-            height="20px"
+            width="25px"
+            height="30px"
           />
         </mat-grid-tile>
       </mat-grid-list>

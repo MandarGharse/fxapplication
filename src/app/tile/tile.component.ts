@@ -28,11 +28,16 @@ export class TileComponent {
     { code: 1, name: "EUR/USD" },
     { code: 2, name: "EUR/GBP" },
     { code: 3, name: "EUR/MXN" },
-    { code: 1, name: "USD/JPY" },
-    { code: 2, name: "GBP/USD" },
-    { code: 3, name: "USD/INR" },
-    { code: 1, name: "EUR/NOK" },
-    { code: 2, name: "USD/RUB" },
+    { code: 4, name: "USD/JPY" },
+    { code: 5, name: "GBP/USD" },
+    { code: 6, name: "USD/INR" },
+    { code: 7, name: "EUR/NOK" },
+    { code: 8, name: "USD/RUB" },
+  ];
+
+  accountList: Array<any> = [
+    { code: 1, name: "Account 1" },
+    { code: 2, name: "Account 2" },
   ];
   
   constructor(
