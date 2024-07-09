@@ -24,7 +24,6 @@ export class TileComponent {
     new Tile(),
   ];
 
-<<<<<<< HEAD
   ccyPairList: Array<any> = [
     { code: 1, name: "EUR/USD" },
     { code: 2, name: "EUR/GBP" },
@@ -37,10 +36,6 @@ export class TileComponent {
   ];
 
   accountList: Array<any> = [
-    { code: 1, name: "Account 1" },
-    { code: 2, name: "Account 2" },
-=======
-  accountList: Array<any> = [
     { code: 1, name: 'Account 1' },
     { code: 2, name: 'Account 2' },
     { code: 3, name: 'Account 3' },
@@ -49,18 +44,6 @@ export class TileComponent {
     { code: 6, name: 'Account 6' },
     { code: 7, name: 'Account 7' },
     { code: 8, name: 'Account 8' },
->>>>>>> 9f79cabc8818b43f8b4f439ff4665e9cfd59d91d
-  ];
-
-  ccyPairList: Array<any> = [
-    { code: 1, name: 'EUR/USD' },
-    { code: 2, name: 'EUR/GBP' },
-    { code: 3, name: 'EUR/MXN' },
-    { code: 1, name: 'USD/JPY' },
-    { code: 2, name: 'GBP/USD' },
-    { code: 3, name: 'USD/INR' },
-    { code: 1, name: 'EUR/NOK' },
-    { code: 2, name: 'USD/RUB' },
   ];
 
   constructor(
